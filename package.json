@@ -2,7 +2,7 @@
   "name": "phong",
   "version": "1.0.0",
   "description": "web chat",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "babel-node src/server.js"
@@ -28,6 +28,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "babel-register": "^6.26.0"
+    "babel-register": "^6.26.0",
+    "nodemon": "^1.19.1"
   }
 }
