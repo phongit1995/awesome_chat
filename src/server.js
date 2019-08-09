@@ -1,26 +1,15 @@
 import express from "express";
-import ContactModel from "./models/contact.model";
+import configViewEngine from './config/viewEngine';
 import DBConnect from "./config/connectdb";
 require('dotenv').config()
 let app = express();
 DBConnect();
+configViewEngine(app);
 app.get("/",(req,res)=>{
-    res.send("Phong Nguyễn");
+    res.render("main/master");
 })
-app.get("/test", async(req,res)=>{
-    try{
-        let item ={
-            userID:"phong",
-            contactID:"Nguyen"
-        }
-        let contact = await ContactModel.createNew(item);
-        console.log(contact);
-        res.send("Phong" + contact);
-
-    }
-    catch(erro){
-        Console.log(erro);
-    }
+app.get("/login", async(req,res)=>{
+    res.render('auth/loginRegister');
 })
 app.listen(process.env.APP_PORT,()=>{
     console.log("Đang Chạy Trên Port :" + process.env.APP_PORT);
