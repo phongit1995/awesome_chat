@@ -24,7 +24,15 @@ let UserSchema = new Schema({
         email:{type:String, trim:true}
     },
     createAt:{type:Number,default:Date.now},
-    updateAt:{type:Number,default:Date.now},
-    deleteeAt:{type:Number,default:Date.now}
+    updateAt:{type:Number,default:null},
+    deleteeAt:{type:Number,default:null}
 })
+UserSchema.statics ={
+    createNew(item){
+        return this.create(item);
+ },
+ findbyEmail(email){
+     return this.findOne({"local.email":email}).exec();
+ }
+}
 module.exports = mongoose.model("user",UserSchema);

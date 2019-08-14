@@ -1,11 +1,21 @@
+require('dotenv').config();
 import express from "express";
 import configViewEngine from './config/viewEngine';
 import DBConnect from "./config/connectdb";
 import InitRouter  from './routers/web';
-require('dotenv').config()
+import bodyparser from 'body-parser';
+import Connectflash from 'connect-flash';
+import configSession from './config/session'
+
 let app = express();
 DBConnect();
 configViewEngine(app);
+app.use(bodyparser.urlencoded({extended:true}));
+configSession(app);
+// Enable flash message
+app.use(Connectflash());
+// Config Session
+
 InitRouter(app);
 
 app.listen(process.env.APP_PORT,()=>{
