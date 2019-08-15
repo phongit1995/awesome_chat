@@ -9,13 +9,18 @@ export const transErrors={
     account_in_use: "Email Này Đã Được Sử Dụng",
     account_removed:"Tài Khoản Này Đã Bị Xóa",
     account_not_active:"Tài Khoản Chưa Được Kich Hoạt",
-    token_undefine:"Token Không Tồn Tại"
+    token_undefine:"Token Không Tồn Tại",
+    login_failed:"Sai Tài Khoản Hoặc Mật Khẩu",
+    server_erro:"Có Lỗi Ở Phía Server"
 }
 export const transSucces={
     Usercreated:(userEmail)=>{
         return `Tài Khoản <strong>${userEmail} </strong> đã được tạo . Vui Lòng Kiểm Tra Email Của Bạn`
     },
-    Account_active:"Kích Hoạt Tải Khoản Thành Công . Bây Giờ Bạn Có Thể Đăng Nhập Vào Ứng Dụng"
+    Account_active:"Kích Hoạt Tải Khoản Thành Công . Bây Giờ Bạn Có Thể Đăng Nhập Vào Ứng Dụng",
+    login_succes:(username)=>{
+        return `Xin Chào ${username} Chúc Bạn 1 Ngày Tốt Lành`;
+    }
 }
 export const transEmail = {
     subject:"Xác Nhận Kich Hoạt Tài Khoản",
