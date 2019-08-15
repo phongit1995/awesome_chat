@@ -1,5 +1,6 @@
 import {validationResult} from 'express-validator';
-import {auth} from '../services'
+import {auth} from '../services';
+import {transSucces} from './../../lang/vi';
 let authLogin = (req,res)=>{
         var obj={
             errors:req.flash("errors"),
@@ -50,4 +51,21 @@ let verfyAccount = async (req,res)=>{
     }
     return res.redirect('/login');
 }
-module.exports = {authLogin,authLogout,postRegister,verfyAccount};
+let getLogout = (req,res)=>{
+    req.logout();
+    req.flash("success",transSucces.logout_success);
+    return res.redirect('/login');
+}
+let CheckloggedIn=(req,res,next)=>{
+    if(!req.isAuthenticated()){
+        return res.redirect('/login');
+    }
+    next();
+}
+let CheckloggedOut=(req,res,next)=>{
+    if(req.isAuthenticated()){
+        return res.redirect('/');
+    }
+    next();
+}
+module.exports = {authLogin,authLogout,postRegister,verfyAccount,getLogout,CheckloggedIn,CheckloggedOut};

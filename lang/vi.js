@@ -20,7 +20,8 @@ export const transSucces={
     Account_active:"Kích Hoạt Tải Khoản Thành Công . Bây Giờ Bạn Có Thể Đăng Nhập Vào Ứng Dụng",
     login_succes:(username)=>{
         return `Xin Chào ${username} Chúc Bạn 1 Ngày Tốt Lành`;
-    }
+    },
+    logout_success:"Đăng Xuất Tải Khoản Thành Công"
 }
 export const transEmail = {
     subject:"Xác Nhận Kich Hoạt Tài Khoản",
