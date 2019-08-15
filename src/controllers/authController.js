@@ -24,7 +24,7 @@ let postRegister=  async(req,res)=>{
         return res.redirect('/login');
     }
     try{
-        let result = await auth.register(req.body.email,req.body.gender,req.body.password);
+        let result = await auth.register(req.body.email,req.body.gender,req.body.password,req.protocol,req.get('host'));
         succesArr.push(result);
         req.flash('success',succesArr);
     }
@@ -37,4 +37,17 @@ let postRegister=  async(req,res)=>{
      
    console.log(req.body);
 }
-module.exports = {authLogin,authLogout,postRegister};
+let verfyAccount = async (req,res)=>{
+    let erroArr=[];
+    let succesArr=[];
+    try {
+        let VeryfyStatus = await auth.VerifyAccount(req.params.token);
+        succesArr.push(VeryfyStatus);
+        req.flash('success',succesArr);
+    } catch (error) {
+        erroArr.push(error);
+        req.flash('errors',erroArr);
+    }
+    return res.redirect('/login');
+}
+module.exports = {authLogin,authLogout,postRegister,verfyAccount};

@@ -33,6 +33,22 @@ UserSchema.statics ={
  },
  findbyEmail(email){
      return this.findOne({"local.email":email}).exec();
+ },
+ removeId(id){
+     return this.findByIdAndRemove(id);
+ },
+ findByToken(token){
+    return this.findOne({
+        "local.veriftToken":token
+    });
+ },
+ verify(token){
+     return this.findOneAndUpdate({
+         "local.veriftToken":token
+     },{
+         "local.isActive":true,
+         "local.veriftToken":null
+     },{useFindAndModify: false}).exec();
  }
 }
 module.exports = mongoose.model("user",UserSchema);
