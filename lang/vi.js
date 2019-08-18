@@ -11,13 +11,16 @@ export const transErrors={
     account_not_active:"Tài Khoản Chưa Được Kich Hoạt",
     token_undefine:"Token Không Tồn Tại",
     login_failed:"Sai Tài Khoản Hoặc Mật Khẩu",
-    server_erro:"Có Lỗi Ở Phía Server"
+    server_erro:"Có Lỗi Ở Phía Server",
+    avatar_type:"Kiểu File Không Hợp Lệ Chỉ Chấp Nhận Jpg & Png",
+    avatar_size:"Ảnh Upload Tối Đa Là 1 MB"
 }
 export const transSucces={
     Usercreated:(userEmail)=>{
         return `Tài Khoản <strong>${userEmail} </strong> đã được tạo . Vui Lòng Kiểm Tra Email Của Bạn`
     },
     Account_active:"Kích Hoạt Tải Khoản Thành Công . Bây Giờ Bạn Có Thể Đăng Nhập Vào Ứng Dụng",
+    Avatar_updated:"Cập Nhật Thành Công",
     login_succes:(username)=>{
         return `Xin Chào ${username} Chúc Bạn 1 Ngày Tốt Lành`;
     }

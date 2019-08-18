@@ -1,5 +1,5 @@
 import express  from 'express';
-import {auth, Home} from '../controllers';
+import {auth, Home,User} from '../controllers';
 import passport from 'passport';
 import initPassportLocal from '../controllers/passportController/local';
 import initPassportFacebook from '../controllers/passportController/facebook';
@@ -25,6 +25,7 @@ let initRouter = (app)=>{
         failureRedirect:"/login",
     }))
     router.get("/logout",auth.CheckloggedIn,auth.getLogout);
+    router.put('/user/update-avatar',auth.CheckloggedIn,User.updateAvatar);
     return app.use("/",router);
 }
 module.exports = initRouter;

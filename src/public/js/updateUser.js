@@ -37,7 +37,7 @@ function updateUserinfo(){
             let formdata = new FormData();
             formdata.append("avatar",fileData);
             UserAvatar = formdata;
-            console.log(UserAvatar);
+          
         }
         else{
             alertify.notify("Trình Duyệt Của Bạn Không Hỗ Trợ File Reader","error",7);
@@ -77,12 +77,19 @@ $(document).ready(()=>{
             cache:false,
             contentType:false,
             processData:false,
-            data:userAvatar,
+            data:UserAvatar,
             success:function(result){
-
+               
+                $(".user-modal-alert-succes").find("span").text(result.message);
+                $(".user-modal-alert-succes").css("display","block");
+                $("#navbar-user-avatar").attr("src",result.imageSrc);
+                originAvatarSrc= result.imageSrc;
+                $("#input-cancel-btn-update-user").click();
             },
-            erro:function(erro){
-                
+            error:function(erro){
+                $(".user-modal-alert-error").find("span").text(erro.responseText);
+                $(".user-modal-alert-error").css("display","block");
+                $("#input-cancel-btn-update-user").click();
             }
         })
     })
@@ -90,5 +97,6 @@ $(document).ready(()=>{
         let UserAvatar = null;
         let userInfo={};
         $("#user-model-avatar").attr("src",originAvatarSrc);
+        $("#input-change-avatar").val(null);
     })
 })
