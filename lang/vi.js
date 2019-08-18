@@ -2,7 +2,11 @@ export const transValidation={
     email_incorrect:"email có dạng example@phong.com",
     gender_incorrect:"Đừng Nghịch Nữa Anh",
     password_incorrect:"Mật Khẩu Phải Chứa Ít Nhất 8 Ký tự bao gồm Chứ Hoa Số Và Ký tự đặc biệt",
-    password_confirm_incorrect:"Nhập Lại Mật Khẩu Chưa Chính Xác"
+    password_confirm_incorrect:"Nhập Lại Mật Khẩu Chưa Chính Xác",
+    update_username:"Người Dùng 3 Tới 17 Ký Tự Và Không Được Phép Chứa Ký Tự Đặc Biệt",
+    update_gender:"Dữ Liệu Giới Tính Có Vấn Đề",
+    update_adress:"Địa Chỉ Giới Hạn Trong Khoảng 3 tới 30 Ký Tự",
+    update_phone:"Số Điện Thoại Sai"
    
 }
 export const transErrors={
@@ -20,7 +24,7 @@ export const transSucces={
         return `Tài Khoản <strong>${userEmail} </strong> đã được tạo . Vui Lòng Kiểm Tra Email Của Bạn`
     },
     Account_active:"Kích Hoạt Tải Khoản Thành Công . Bây Giờ Bạn Có Thể Đăng Nhập Vào Ứng Dụng",
-    Avatar_updated:"Cập Nhật Thành Công",
+    Avatar_updated:"Cập Nhật Thông Tin Thành Công",
     login_succes:(username)=>{
         return `Xin Chào ${username} Chúc Bạn 1 Ngày Tốt Lành`;
     }

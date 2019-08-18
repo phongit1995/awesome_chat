@@ -6,7 +6,7 @@ import initPassportFacebook from '../controllers/passportController/facebook';
 initPassportFacebook();
 initPassportLocal();
 let router = express.Router();
-import {authValida} from './../validation'
+import {authValida,userValida} from './../validation'
 let initRouter = (app)=>{
     router.get("/",auth.CheckloggedIn,Home);
     router.get("/login",auth.CheckloggedOut, auth.authLogin);
@@ -26,6 +26,7 @@ let initRouter = (app)=>{
     }))
     router.get("/logout",auth.CheckloggedIn,auth.getLogout);
     router.put('/user/update-avatar',auth.CheckloggedIn,User.updateAvatar);
+    router.put('/user/update-info',auth.CheckloggedIn,userValida.updateInfo,User.updateInfo);
     return app.use("/",router);
 }
 module.exports = initRouter;
