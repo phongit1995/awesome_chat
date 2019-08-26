@@ -59,6 +59,26 @@ UserSchema.statics ={
  },
  updateUser(id,item){
      return this.findByIdAndUpdate(id,item).exec();
+ },
+ updatePassWord(id,pass){
+     return this.findByIdAndUpdate(id,{"local.password":pass}).exec();
+ },
+ findAllForAddContact(deprecreateUserIDs,Keyword){
+     return this.find({
+         $and:[
+             {"_id":{$nin:deprecreateUserIDs}},
+             {"local.isActive":true},
+             {
+                $or:[
+                    {"username":{"$regex": new RegExp(Keyword,"i") }},
+                    {"local.email":{"$regex":new RegExp(Keyword,"i")}},
+                    {"facebook.email":{"$regex":new RegExp(Keyword,"i")}},
+                    {"google.email":{"$regex":new RegExp(Keyword,"i")}}
+                ]
+             }
+
+         ]
+     },{_id:1,username:1,avatar:1,address:1}).exec();
  }
 }
 UserSchema.methods={

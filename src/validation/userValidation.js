@@ -9,4 +9,10 @@ let updateInfo=[
 
 
 ];
-module.exports = {updateInfo:updateInfo};
+let updatePass=[
+    check("newPass",transValidation.update_password).isLength({min:8,max:17}).matches(``),
+    check("confirmPass",transValidation.update_password_confirm).custom((value,{req})=>
+         value=== req.body.confirmPass
+    )
+]
+module.exports = {updateInfo:updateInfo,updatePass};

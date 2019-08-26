@@ -13,6 +13,38 @@ let ContactSchema = new Schema({
 ContactSchema.statics ={
     createNew(item){
         return this.create(item);
+    },
+    findAlltByUser(userid){
+         return this.find({
+             $or:[
+                 {"userID":userid},
+                 {"contactID":userid}
+             ]
+         }
+         ).exec();
+    },
+    checkExits(userId,contactID){
+        return this.find(
+        {
+            $or:[
+                {
+                    $and:[
+                        {"userID":userId},
+                        {"contactID":contactID}
+                    ]
+                },
+                {
+                    $and:[
+                        {"userID":contactID},
+                        {"contactID":userId}
+                    ]
+                }
+            ]
+        }).exec();
+    },removeContact(userID,contactID){
+        return this.deleteOne({
+            "userID":userID,"contactID":contactID
+        }).exec();
     }
 }
 module.exports = mongoose.model("contact",ContactSchema);

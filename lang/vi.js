@@ -6,7 +6,9 @@ export const transValidation={
     update_username:"Người Dùng 3 Tới 17 Ký Tự Và Không Được Phép Chứa Ký Tự Đặc Biệt",
     update_gender:"Dữ Liệu Giới Tính Có Vấn Đề",
     update_adress:"Địa Chỉ Giới Hạn Trong Khoảng 3 tới 30 Ký Tự",
-    update_phone:"Số Điện Thoại Sai"
+    update_phone:"Số Điện Thoại Sai",
+    update_password:"Mật Khẩu Mới Phải Từ 8 Tới 17 Ký Tự",
+    update_password_confirm:"2 Mật Khẩu Chưa Giống Nhau"
    
 }
 export const transErrors={
@@ -17,7 +19,9 @@ export const transErrors={
     login_failed:"Sai Tài Khoản Hoặc Mật Khẩu",
     server_erro:"Có Lỗi Ở Phía Server",
     avatar_type:"Kiểu File Không Hợp Lệ Chỉ Chấp Nhận Jpg & Png",
-    avatar_size:"Ảnh Upload Tối Đa Là 1 MB"
+    avatar_size:"Ảnh Upload Tối Đa Là 1 MB",
+    account_undefined:"Tải Khoản Này Không Tồn Tại",
+    account_password_fail:"Mật Khẩu Bạn Nhập Chưa Đúng"
 }
 export const transSucces={
     Usercreated:(userEmail)=>{
@@ -27,7 +31,8 @@ export const transSucces={
     Avatar_updated:"Cập Nhật Thông Tin Thành Công",
     login_succes:(username)=>{
         return `Xin Chào ${username} Chúc Bạn 1 Ngày Tốt Lành`;
-    }
+    },
+    change_pass_sucess:"Cập Nhật Mật Khẩu Thành Công"
 }
 export const transEmail = {
     subject:"Xác Nhận Kich Hoạt Tài Khoản",

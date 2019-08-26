@@ -1,5 +1,5 @@
 import express  from 'express';
-import {auth, Home,User} from '../controllers';
+import {auth, Home,User,contact} from '../controllers';
 import passport from 'passport';
 import initPassportLocal from '../controllers/passportController/local';
 import initPassportFacebook from '../controllers/passportController/facebook';
@@ -27,6 +27,10 @@ let initRouter = (app)=>{
     router.get("/logout",auth.CheckloggedIn,auth.getLogout);
     router.put('/user/update-avatar',auth.CheckloggedIn,User.updateAvatar);
     router.put('/user/update-info',auth.CheckloggedIn,userValida.updateInfo,User.updateInfo);
+    router.put('/user/update-info-password',auth.CheckloggedIn,userValida.updatePass ,User.updatePassword);
+    router.get('/user/searchInfo/:keyword', auth.CheckloggedIn ,contact.findAllContact );
+    router.post("/contact/add-new", auth.CheckloggedIn ,contact.addnewContact);
+    router.post("/contact/remove-contact", auth.CheckloggedIn ,contact.removeContact);
     return app.use("/",router);
 }
 module.exports = initRouter;
